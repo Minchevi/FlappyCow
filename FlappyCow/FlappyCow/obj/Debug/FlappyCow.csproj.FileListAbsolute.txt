@@ -1,0 +1,9 @@
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\bin\Debug\FlappyCow.exe.config
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\obj\Debug\FlappyCow.csprojResolveAssemblyReference.cache
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\obj\Debug\FlappyCow.Game.resources
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\obj\Debug\FlappyCow.Properties.Resources.resources
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\obj\Debug\FlappyCow.csproj.GenerateResource.Cache
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\bin\Debug\FlappyCow.exe
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\bin\Debug\FlappyCow.pdb
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\obj\Debug\FlappyCow.exe
+C:\Users\Nelly\Desktop\TeamMinchevi\FlappyCow\FlappyCow\obj\Debug\FlappyCow.pdb
