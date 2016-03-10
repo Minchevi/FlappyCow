@@ -25,11 +25,12 @@ namespace FlappyCow
         {
         }
 
-        private void Game_KeyDown(object sender, KeyEventArgs e)
+        private void Game_KeyPress(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
             {
                 speed = -15;
+                (new System.Media.SoundPlayer(global::FlappyCow.Properties.Resources.jump)).Play();
             }
         }
 
@@ -37,7 +38,6 @@ namespace FlappyCow
         {
             speed += gravity;
             cow.Location = new Point(cow.Location.X, cow.Location.Y + speed);
-
 
         }
     }

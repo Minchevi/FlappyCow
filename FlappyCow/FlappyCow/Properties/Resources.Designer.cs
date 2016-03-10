@@ -71,11 +71,20 @@ namespace FlappyCow.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream jump {
+            get {
+                return ResourceManager.GetStream("jump", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap milk_bottom {
+        internal static System.Drawing.Bitmap milkBottom {
             get {
-                object obj = ResourceManager.GetObject("milk-bottom", resourceCulture);
+                object obj = ResourceManager.GetObject("milkBottom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +92,9 @@ namespace FlappyCow.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap milk_top {
+        internal static System.Drawing.Bitmap milkTop {
             get {
-                object obj = ResourceManager.GetObject("milk-top", resourceCulture);
+                object obj = ResourceManager.GetObject("milkTop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -33,6 +33,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.cow = new System.Windows.Forms.PictureBox();
+            this.points = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cow)).BeginInit();
@@ -47,7 +48,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::FlappyCow.Properties.Resources.milk_top;
+            this.pictureBox2.BackgroundImage = global::FlappyCow.Properties.Resources.milkTop;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Location = new System.Drawing.Point(278, -16);
             this.pictureBox2.Name = "pictureBox2";
@@ -58,7 +59,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::FlappyCow.Properties.Resources.milk_bottom;
+            this.pictureBox1.BackgroundImage = global::FlappyCow.Properties.Resources.milkBottom;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(278, 253);
             this.pictureBox1.Name = "pictureBox1";
@@ -77,12 +78,24 @@
             this.cow.TabIndex = 0;
             this.cow.TabStop = false;
             // 
+            // points
+            // 
+            this.points.AutoSize = true;
+            this.points.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.points.ForeColor = System.Drawing.Color.Firebrick;
+            this.points.Location = new System.Drawing.Point(650, 10);
+            this.points.Name = "points";
+            this.points.Size = new System.Drawing.Size(35, 37);
+            this.points.TabIndex = 5;
+            this.points.Text = "0";
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
-            this.ClientSize = new System.Drawing.Size(779, 428);
+            this.ClientSize = new System.Drawing.Size(778, 431);
+            this.Controls.Add(this.points);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cow);
@@ -94,11 +107,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Flappy Cow";
             this.Load += new System.EventHandler(this.Game_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cow)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -108,6 +122,7 @@
         public System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label points;
     }
 }
 
