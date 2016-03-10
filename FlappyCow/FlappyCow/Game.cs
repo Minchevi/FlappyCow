@@ -15,7 +15,8 @@ namespace FlappyCow
 
         private int speed = 0;
         private int gravity = 2;
-        private PictureBox[] obstacles = new PictureBox[3];
+        private PictureBox[,] obstacles = new PictureBox[3,2];
+        Random rnd = new Random();
 
         public Game()
         {
@@ -46,10 +47,13 @@ namespace FlappyCow
             cow.Location = new Point(cow.Location.X, cow.Location.Y + speed);
             for(int i = 0; i <= 2; i++)
             {
-                obstacles[i].Left -= 5;
-                if (obstacles[i].Left < 0)
+                obstacles[i, 0].Left -= 5;
+                obstacles[i, 1].Left -= 5;
+                if (obstacles[i,0].Left < 0)
                 {
-                    obstacles[i].Left = 600; 
+
+                    obstacles[i, 0].Location = new System.Drawing.Point(800, 70 + rnd.Next(0, 200));
+                    obstacles[i, 1].Location = new System.Drawing.Point(800, 70 + rnd.Next(0, 200));
                 }
             }
         }
@@ -59,17 +63,27 @@ namespace FlappyCow
             for(int i = 0; i < numberOfObstacles; i++)
             {
 
+                var currentTopObstacle = new PictureBox();
                 var currentBottomObstacle = new PictureBox();
+
                 this.Controls.Add(currentBottomObstacle);
+                this.Controls.Add(currentTopObstacle);
 
                 currentBottomObstacle.BackColor = System.Drawing.Color.Transparent;
                 currentBottomObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkBottom;
                 currentBottomObstacle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-                currentBottomObstacle.Location = new System.Drawing.Point(i*300+400, 160);
-                currentBottomObstacle.Size = new System.Drawing.Size(65, 140);
+                currentBottomObstacle.Location = new System.Drawing.Point(i*300+400, 70 + rnd.Next(0,200));
+                currentBottomObstacle.Size = new System.Drawing.Size(65, 200);
+          
+                obstacles[i,0] = currentBottomObstacle;
+                obstacles[i,0].Visible = true;
 
-                obstacles[i] = currentBottomObstacle;
-                obstacles[i].Visible = true;
+                currentTopObstacle = currentBottomObstacle;
+                currentTopObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkTop;
+                currentTopObstacle.Top += 70;
+                obstacles[i, 1] = currentTopObstacle;
+                
+                obstacles[i, 1].Visible = true;
             }
         }
     }
