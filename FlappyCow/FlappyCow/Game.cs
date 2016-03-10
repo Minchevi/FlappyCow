@@ -47,13 +47,13 @@ namespace FlappyCow
             cow.Location = new Point(cow.Location.X, cow.Location.Y + speed);
             for(int i = 0; i <= 2; i++)
             {
-                obstacles[i, 0].Left -= 5;
-                obstacles[i, 1].Left -= 5;
+                obstacles[i, 0].Left -= 4;
+                obstacles[i, 1].Left -= 4;
                 if (obstacles[i,0].Left < 0)
                 {
-
-                    obstacles[i, 0].Location = new System.Drawing.Point(800, 70 + rnd.Next(0, 200));
-                    obstacles[i, 1].Location = new System.Drawing.Point(800, 70 + rnd.Next(0, 200));
+                    var positionY = rnd.Next(0, 200);
+                    obstacles[i, 0].Location = new System.Drawing.Point(800, positionY + 70);
+                    obstacles[i, 1].Location = new System.Drawing.Point(800, positionY - 200);
                 }
             }
         }
@@ -63,28 +63,36 @@ namespace FlappyCow
             for(int i = 0; i < numberOfObstacles; i++)
             {
 
-                var currentTopObstacle = new PictureBox();
-                var currentBottomObstacle = new PictureBox();
+                var topObstacle = new PictureBox();
+                var bottomObstacle = new PictureBox();
+                var positionY = rnd.Next(0, 200);
 
-                this.Controls.Add(currentBottomObstacle);
-                this.Controls.Add(currentTopObstacle);
+                this.Controls.Add(bottomObstacle);
+                this.Controls.Add(topObstacle);
 
-                currentBottomObstacle.BackColor = System.Drawing.Color.Transparent;
-                currentBottomObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkBottom;
-                currentBottomObstacle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-                currentBottomObstacle.Location = new System.Drawing.Point(i*300+400, 70 + rnd.Next(0,200));
-                currentBottomObstacle.Size = new System.Drawing.Size(65, 200);
+                bottomObstacle.BackColor = System.Drawing.Color.Transparent;
+                bottomObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkBottom;
+                bottomObstacle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+                bottomObstacle.Location = new System.Drawing.Point(i*300+400, positionY+70);
+                bottomObstacle.Size = new System.Drawing.Size(60, 200);
           
-                obstacles[i,0] = currentBottomObstacle;
+                obstacles[i,0] = bottomObstacle;
                 obstacles[i,0].Visible = true;
 
-                currentTopObstacle = currentBottomObstacle;
-                currentTopObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkTop;
-                currentTopObstacle.Top += 70;
-                obstacles[i, 1] = currentTopObstacle;
-                
+                topObstacle.BackColor = System.Drawing.Color.Transparent;
+                topObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkTop;
+                topObstacle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+                topObstacle.Location = new System.Drawing.Point(i * 300 + 400, positionY - 200);
+                topObstacle.Size = new System.Drawing.Size(60, 200);
+
+                obstacles[i, 1] = topObstacle;
                 obstacles[i, 1].Visible = true;
             }
+        }
+
+        private void points_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
