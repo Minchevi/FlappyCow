@@ -15,6 +15,8 @@ namespace FlappyCow
 
         private int fallingSpeed;
         private int gravity;
+        private int points;
+        private int bestPoints;
         private double obstaclesSpeed;
         private PictureBox[,] obstacles = new PictureBox[3,2];
         private bool isAlive;
@@ -27,6 +29,8 @@ namespace FlappyCow
 
         private void Game_Load(object sender, EventArgs e)
         {
+            bestPoints = 0;
+            bestResult.Text = "Best: 0";
             CreateObstacles(3);
             GameStart();
         }
@@ -56,8 +60,14 @@ namespace FlappyCow
                 obstacles[i, 1].Left -= (int)obstaclesSpeed;
                 if (obstacles[i,0].Left < 0)
                 {
-
-                    points.Text = (Int32.Parse(points.Text) + 1).ToString();
+                    (new System.Media.SoundPlayer(global::FlappyCow.Properties.Resources.point)).Play();
+                    points++;
+                    result.Text = "Points: " + points.ToString();
+                    if (points > bestPoints)
+                    {
+                        bestPoints = points;
+                        bestResult.Text = "Best: " + bestPoints.ToString();
+                    }
                     obstaclesSpeed += 0.25;
                     var positionY = rnd.Next(0, 200);
                     obstacles[i, 0].Location = new System.Drawing.Point(800, positionY + 90);
@@ -77,7 +87,8 @@ namespace FlappyCow
 
         private void GameStart()
         {
-            points.Text = "0";
+            points = 0;
+            result.Text = "Points: 0";
             cow.Location = new Point(50, 90);
             isAlive = true;
             fallingSpeed = 0;

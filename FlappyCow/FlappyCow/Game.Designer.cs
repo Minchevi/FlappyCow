@@ -32,8 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.cow = new System.Windows.Forms.PictureBox();
-            this.points = new System.Windows.Forms.TextBox();
+            this.result = new System.Windows.Forms.TextBox();
             this.retryButton = new System.Windows.Forms.Button();
+            this.bestResult = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,21 +54,21 @@
             this.cow.TabIndex = 0;
             this.cow.TabStop = false;
             // 
-            // points
+            // result
             // 
-            this.points.BackColor = System.Drawing.Color.PapayaWhip;
-            this.points.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.points.Enabled = false;
-            this.points.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.points.ForeColor = System.Drawing.Color.Black;
-            this.points.Location = new System.Drawing.Point(663, 12);
-            this.points.Margin = new System.Windows.Forms.Padding(5);
-            this.points.Name = "points";
-            this.points.ReadOnly = true;
-            this.points.Size = new System.Drawing.Size(93, 39);
-            this.points.TabIndex = 6;
-            this.points.Text = "0";
-            this.points.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.result.BackColor = System.Drawing.Color.PapayaWhip;
+            this.result.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.result.Enabled = false;
+            this.result.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.result.ForeColor = System.Drawing.Color.Black;
+            this.result.Location = new System.Drawing.Point(575, 0);
+            this.result.Margin = new System.Windows.Forms.Padding(5);
+            this.result.Name = "result";
+            this.result.ReadOnly = true;
+            this.result.Size = new System.Drawing.Size(205, 39);
+            this.result.TabIndex = 6;
+            this.result.Text = "Points: 0";
+            this.result.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // retryButton
             // 
@@ -85,14 +86,31 @@
             this.retryButton.Visible = false;
             this.retryButton.Click += new System.EventHandler(this.retryButton_Click);
             // 
+            // bestResult
+            // 
+            this.bestResult.BackColor = System.Drawing.Color.PapayaWhip;
+            this.bestResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bestResult.Enabled = false;
+            this.bestResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bestResult.ForeColor = System.Drawing.Color.Black;
+            this.bestResult.Location = new System.Drawing.Point(575, 39);
+            this.bestResult.Margin = new System.Windows.Forms.Padding(5);
+            this.bestResult.Name = "bestResult";
+            this.bestResult.ReadOnly = true;
+            this.bestResult.Size = new System.Drawing.Size(205, 39);
+            this.bestResult.TabIndex = 8;
+            this.bestResult.Text = "Best: 02341";
+            this.bestResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(778, 431);
+            this.Controls.Add(this.bestResult);
             this.Controls.Add(this.retryButton);
-            this.Controls.Add(this.points);
+            this.Controls.Add(this.result);
             this.Controls.Add(this.cow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -113,8 +131,9 @@
 
         public System.Windows.Forms.PictureBox cow;
         public System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.TextBox points;
+        private System.Windows.Forms.TextBox result;
         private System.Windows.Forms.Button retryButton;
+        private System.Windows.Forms.TextBox bestResult;
     }
 }
 
