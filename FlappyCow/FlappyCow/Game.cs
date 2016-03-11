@@ -13,7 +13,7 @@ namespace FlappyCow
     public partial class Game : Form
     {
 
-        private int speed;
+        private int fallingSpeed;
         private int gravity;
         private double obstaclesSpeed;
         private PictureBox[,] obstacles = new PictureBox[3,2];
@@ -35,21 +35,24 @@ namespace FlappyCow
         {
             if (e.KeyCode == Keys.Space && isAlive)
             {
-                speed = -15;
+                e.SuppressKeyPress = true;
+                fallingSpeed = -12;
                 (new System.Media.SoundPlayer(global::FlappyCow.Properties.Resources.jump)).Play();
             }
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            speed += gravity;
-            cow.Location = new Point(cow.Location.X, cow.Location.Y + speed);
+            if (cow.Location.Y < 0 || cow.Location.Y > this.Height)
+                GameOver();
+            fallingSpeed += gravity;
+            cow.Location = new Point(cow.Location.X, cow.Location.Y + fallingSpeed);
             for (int i = 0; i < 3; i++)
             {
                 if (cow.Bounds.IntersectsWith(obstacles[i, 0].Bounds)
                     || cow.Bounds.IntersectsWith(obstacles[i, 1].Bounds))
                     GameOver();
-                obstacles[i, 0].Left -= (int)obstaclesSpeed;
+                 obstacles[i, 0].Left -= (int)obstaclesSpeed;
                 obstacles[i, 1].Left -= (int)obstaclesSpeed;
                 if (obstacles[i,0].Left < 0)
                 {
@@ -57,7 +60,7 @@ namespace FlappyCow
                     points.Text = (Int32.Parse(points.Text) + 1).ToString();
                     obstaclesSpeed += 0.25;
                     var positionY = rnd.Next(0, 200);
-                    obstacles[i, 0].Location = new System.Drawing.Point(800, positionY + 70);
+                    obstacles[i, 0].Location = new System.Drawing.Point(800, positionY + 90);
                     obstacles[i, 1].Location = new System.Drawing.Point(800, positionY - 200);
                 }
             }
@@ -67,6 +70,7 @@ namespace FlappyCow
         {
             isAlive = false;
             retryButton.Visible = true;
+            retryButton.Enabled = true;
             timer.Stop();
             (new System.Media.SoundPlayer(global::FlappyCow.Properties.Resources.gameOver)).Play();
         }
@@ -74,8 +78,9 @@ namespace FlappyCow
         private void GameStart()
         {
             points.Text = "0";
+            cow.Location = new Point(50, 90);
             isAlive = true;
-            speed = 0;
+            fallingSpeed = 0;
             gravity = 2;
             obstaclesSpeed = 3.5;
             for(int i = 0; i < 3; i++)
@@ -85,20 +90,23 @@ namespace FlappyCow
                 obstacles[i,1].Location = new System.Drawing.Point(i * 300 + 400, positionY - 200);
 
             }
-            cow.Location = new Point(50, 90);
             timer.Start();
         }
 
         private void retryButton_Click(object sender, EventArgs e)
         {
+            retryButton.TabStop = false;
             retryButton.Visible = false;
+            retryButton.Enabled = false;
             GameStart();
 
         }
 
         private void CreateObstacles(int numberOfObstacles)
         {
-            for(int i = 0; i < numberOfObstacles; i++)
+
+            this.cow.Location = new Point(cow.Location.X + 50, cow.Location.Y);
+            for (int i = 0; i < numberOfObstacles; i++)
             {
 
                 var topObstacle = new PictureBox();
@@ -114,7 +122,6 @@ namespace FlappyCow
           
                 obstacles[i,0] = bottomObstacle;
                 obstacles[i,0].Visible = true;
-
                 topObstacle.BackColor = System.Drawing.Color.Transparent;
                 topObstacle.BackgroundImage = global::FlappyCow.Properties.Resources.milkTop;
                 topObstacle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
