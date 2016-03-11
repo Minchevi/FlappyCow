@@ -32,13 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.cow = new System.Windows.Forms.PictureBox();
-            this.points = new System.Windows.Forms.Label();
+            this.points = new System.Windows.Forms.TextBox();
+            this.retryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cow)).BeginInit();
             this.SuspendLayout();
             // 
             // timer
             // 
-            this.timer.Enabled = true;
             this.timer.Interval = 40;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
@@ -47,26 +47,43 @@
             this.cow.BackColor = System.Drawing.Color.Transparent;
             this.cow.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("cow.BackgroundImage")));
             this.cow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cow.Location = new System.Drawing.Point(51, 89);
+            this.cow.Location = new System.Drawing.Point(50, 90);
             this.cow.Name = "cow";
-            this.cow.Size = new System.Drawing.Size(67, 54);
+            this.cow.Size = new System.Drawing.Size(60, 50);
             this.cow.TabIndex = 0;
             this.cow.TabStop = false;
             // 
             // points
             // 
-            this.points.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.points.AutoSize = true;
-            this.points.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.points.ForeColor = System.Drawing.Color.Firebrick;
-            this.points.Location = new System.Drawing.Point(669, 9);
+            this.points.BackColor = System.Drawing.Color.PapayaWhip;
+            this.points.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.points.Enabled = false;
+            this.points.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.points.ForeColor = System.Drawing.Color.Black;
+            this.points.Location = new System.Drawing.Point(663, 12);
+            this.points.Margin = new System.Windows.Forms.Padding(5);
             this.points.Name = "points";
-            this.points.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.points.Size = new System.Drawing.Size(35, 37);
-            this.points.TabIndex = 5;
+            this.points.ReadOnly = true;
+            this.points.Size = new System.Drawing.Size(93, 39);
+            this.points.TabIndex = 6;
             this.points.Text = "0";
-            this.points.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.points.Click += new System.EventHandler(this.points_Click);
+            this.points.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // retryButton
+            // 
+            this.retryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.retryButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.retryButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.retryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.retryButton.Location = new System.Drawing.Point(295, 104);
+            this.retryButton.Name = "retryButton";
+            this.retryButton.Size = new System.Drawing.Size(197, 117);
+            this.retryButton.TabIndex = 7;
+            this.retryButton.Text = "Retry?";
+            this.retryButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.retryButton.UseVisualStyleBackColor = true;
+            this.retryButton.Visible = false;
+            this.retryButton.Click += new System.EventHandler(this.retryButton_Click);
             // 
             // Game
             // 
@@ -74,6 +91,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(778, 431);
+            this.Controls.Add(this.retryButton);
             this.Controls.Add(this.points);
             this.Controls.Add(this.cow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -81,7 +99,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Game";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flappy Cow";
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyPress);
@@ -95,7 +113,8 @@
 
         public System.Windows.Forms.PictureBox cow;
         public System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label points;
+        private System.Windows.Forms.TextBox points;
+        private System.Windows.Forms.Button retryButton;
     }
 }
 
